@@ -6,12 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:47:18 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 13:58:46 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/15 20:24:06 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+//Functions to initialise all structs to 0 / NULL values for easier debugging and freeing
 void    init_texture(t_textureinfo *texture)
 {
     texture->north = NULL;
@@ -60,9 +61,10 @@ void    init_ray(t_ray *ray)
 	ray->draw_start = 0;
 	ray->draw_end = 0;
 }
+
 void    init_player(t_player *player)
 {
-    player->dir = NULL;
+    player->dir = '\0';
     player->pos_x = 0.0;
     player->pos_y = 0.0;
     player->dir_x = 0.0;

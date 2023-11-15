@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 14:08:15 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/15 20:21:39 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@
 	************************************************************************** */
 
 # define ERR_INP "Correct usage: ./cub3d <path to .cub file>"
+# define ERR_FILE_IS_DIR "The path you entered is a directory."
+# define ERR_FILE_NOT_CUB "The entered file does not have the .cub suffix."
+# define ERR_FILE_NOT_XMP "The file does not contain valid .xmp textures."
+# define ERR_MALLOC "Malloc failed."
+
+/*	**************************************************************************
+									ENUM
+	************************************************************************** */
+
+	enum e_output
+	{
+		SUCCESS = 0,
+		FAILURE = 1,
+	};
 
 /*	**************************************************************************
 									STRUCTS
@@ -133,9 +147,13 @@ typedef struct s_data
 void	init_data(t_data *data);
 
 //exit functions
+void	exit_cubed(t_data *data, int code);
+int 	err_msg(char *str, int code);
 
 //parse functions
-int parse_data(t_data *data, char *file);
+int		parse_args(char *file, t_data *data);
+int 	check_file(char *file, bool val);
+void	parse_data(char *file, t_data *data);
 
 //render functions
 int	render(t_data *data);
