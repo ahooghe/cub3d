@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahooghe <ahooghe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 06:38:32 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/06/05 06:38:33 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 00:11:35 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_isspace(int c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	return (0);
+}
 
 int	ft_isprint(int c)
 {
