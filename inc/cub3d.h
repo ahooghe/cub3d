@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/16 14:18:27 by brmajor          ###   ########.fr       */
+/*   Updated: 2023/11/17 13:43:12 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@
 # define ERR_FILE_NOT_CUB "The entered file does not have the .cub suffix."
 # define ERR_FILE_NOT_XMP "The file does not contain valid .xmp textures."
 # define ERR_MALLOC "Malloc failed."
+# define ERR_TEX_INVALID "Texture file is invalid."
+# define ERR_INVALID_MAP "Map structure is invalid."
+# define ERR_FLOOR_CEILING "Formatting of floor and/or ceiling is wrong."
+# define ERR_FLOOR "Floor is not a valid RGB color."
+# define ERR_CEILING "Ceiling is not a valid RGB color."
 
 /*	*********************************************************************
 									ENUM
@@ -53,6 +58,9 @@ enum e_output
 {
 	SUCCESS = 0,
 	FAILURE = 1,
+	ERR = 2,
+	BREAK = 3,
+	CONTINUE = 10,
 };
 
 /*	*********************************************************************
@@ -158,7 +166,11 @@ int		close_window_key(int keycode, t_data *data);
 int		parse_args(char *file, t_data *data);
 int		check_file(char *file, bool val);
 void	parse_data(char *file, t_data *data);
+<<<<<<< HEAD
 void	fill_map_whitespace(t_data *data);
+=======
+int		get_file_data(t_data *data, char **file);
+>>>>>>> refs/remotes/origin/master
 
 //render functions
 int		render(t_data *data);
