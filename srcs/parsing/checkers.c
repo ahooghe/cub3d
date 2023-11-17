@@ -6,14 +6,14 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:14:30 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 20:25:08 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 13:10:42 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
 //Function to check if file is a dir
-static bool is_dir(char *file)
+static bool	is_dir(char *file)
 {
 	int		fd;
 	bool	ret;
@@ -29,10 +29,10 @@ static bool is_dir(char *file)
 }
 
 //Function to check if  file is .cub
-static bool is_cub(char *file)
+static bool	is_cub(char *file)
 {
-	size_t len;
-	char *sub;
+	size_t	len;
+	char	*sub;
 
 	len = ft_strlen(file);
 	sub = ft_substr(file, len - 4, 4);
@@ -42,10 +42,10 @@ static bool is_cub(char *file)
 }
 
 //Function to check if file is .xmp
-static bool is_xpm(char *file)
+static bool	is_xpm(char *file)
 {
-	size_t len;
-	char *sub;
+	size_t	len;
+	char	*sub;
 
 	len = ft_strlen(file);
 	sub = ft_substr(file, len - 4, 4);
@@ -55,9 +55,9 @@ static bool is_xpm(char *file)
 }
 
 //Function to check if file is file
-int check_file(char *file, bool val)
+int	check_file(char *file, bool val)
 {
-	int fd;
+	int		fd;
 
 	if (is_dir(file))
 		return (err_msg(ERR_FILE_IS_DIR, FAILURE));

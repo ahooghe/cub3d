@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:07:08 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 20:25:37 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 13:25:14 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int parse_args(char *file, t_data *data)
 	//    exit_cubed(data, FAILURE);
 	//if (check_textures_validity(data, &data->texinfo) == FAILURE)
 	//    exit_cubed(data, FAILURE);
-	//init_player_direction(data);
+	init_player_direction(data);
 	return (SUCCESS);
 }

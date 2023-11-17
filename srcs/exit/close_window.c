@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmajor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 11:07:55 by brmajor           #+#    #+#             */
-/*   Updated: 2023/11/16 12:59:53 by brmajor          ###   ########.fr       */
+/*   Created: 2023/11/16 11:26:19 by brmajor           #+#    #+#             */
+/*   Updated: 2023/11/16 13:13:05 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	init_mlx(t_data *data)
+int	close_window(t_data *data)
 {
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, data->win_width,
-			data->win_height, "cub3d");
-	data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	// more frees
+	exit(0);
+}
+
+int	close_window_key(int keycode, t_data *data)
+{
+	if (keycode == 65307)
+		close_window(data);
+	return (0);
 }

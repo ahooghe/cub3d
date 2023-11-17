@@ -6,18 +6,19 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:50:48 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 20:27:50 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 13:12:05 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-//Will read in the whole file to check how many lines are in the file for the mallocation
+//Will read in the whole file to check how many lines
+//	are in the file for the mallocation
 static int	get_amount_lines(t_data *data, char *file)
 {
-	int fd;
-	char *line;
-	int line_count;
+	int		fd;
+	char	*line;
+	int		line_count;
 
 	line_count = 0;
 	fd = open(file, O_RDONLY);
@@ -38,7 +39,7 @@ static int	get_amount_lines(t_data *data, char *file)
 static void	fill_2dim(int row, int column, int i, t_data *data)
 {
 	char	*line;
-	
+
 	line = get_next_line(data->mapinfo.fd);
 	while (line != NULL)
 	{
@@ -61,7 +62,8 @@ void	parse_data(char *file, t_data *data)
 {
 	data->mapinfo.line_count = get_amount_lines(data, file);
 	data->mapinfo.path = file;
-	data->mapinfo.file = ft_calloc(data->mapinfo.line_count + 1, sizeof(char *));
+	data->mapinfo.file = ft_calloc(data->mapinfo.line_count + 1,
+			sizeof(char *));
 	if (!(data->mapinfo.file))
 		exit_cubed(data, err_msg(ERR_MALLOC, 0));
 	data->mapinfo.fd = open(file, O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 20:21:39 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:18:27 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 
-/*	**************************************************************************
+/*	*********************************************************************
 										MACROS
-	************************************************************************** */
+	********************************************************************* */
 
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
 
-/*	**************************************************************************
+/*	*********************************************************************
 									ERROR MACROS
-	************************************************************************** */
+	********************************************************************* */
 
 # define ERR_INP "Correct usage: ./cub3d <path to .cub file>"
 # define ERR_FILE_IS_DIR "The path you entered is a directory."
@@ -45,19 +45,19 @@
 # define ERR_FILE_NOT_XMP "The file does not contain valid .xmp textures."
 # define ERR_MALLOC "Malloc failed."
 
-/*	**************************************************************************
+/*	*********************************************************************
 									ENUM
-	************************************************************************** */
+	********************************************************************* */
 
-	enum e_output
-	{
-		SUCCESS = 0,
-		FAILURE = 1,
-	};
+enum e_output
+{
+	SUCCESS = 0,
+	FAILURE = 1,
+};
 
-/*	**************************************************************************
+/*	*********************************************************************
 									STRUCTS
-	************************************************************************** */
+	********************************************************************* */
 
 typedef struct s_textureinfo
 {
@@ -126,37 +126,42 @@ typedef struct s_player
 
 typedef struct s_data
 {
-	void		*mlx;
-	void		*win;
-	int			win_height;
-	int			win_width;
-	int			**texture_pixels;
-	int			**textures;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	int				win_height;
+	int				win_width;
+	int				**texture_pixels;
+	int				**textures;
 	t_textureinfo	texinfo;
-	t_player	player;
-	t_ray		ray;
-	t_mapinfo	mapinfo;
-	char		**map;
+	t_player		player;
+	t_ray			ray;
+	t_mapinfo		mapinfo;
+	char			**map;
 }	t_data;
 
-/*	**************************************************************************
+/*	*********************************************************************
 									FUNCTIONS
-	************************************************************************** */
+	********************************************************************* */
 
 //init functions
 void	init_data(t_data *data);
+void	init_mlx(t_data *data);
 
 //exit functions
 void	exit_cubed(t_data *data, int code);
-int 	err_msg(char *str, int code);
+int		err_msg(char *str, int code);
+int		close_window(t_data *data);
+int		close_window_key(int keycode, t_data *data);
 
 //parse functions
 int		parse_args(char *file, t_data *data);
-int 	check_file(char *file, bool val);
+int		check_file(char *file, bool val);
 void	parse_data(char *file, t_data *data);
+void	fill_map_whitespace(t_data *data);
 
 //render functions
-int	render(t_data *data);
+int		render(t_data *data);
 
 //error handling functions
 
