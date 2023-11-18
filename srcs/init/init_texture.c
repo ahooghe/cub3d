@@ -6,14 +6,14 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:12:38 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:42:00 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 22:16:11 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
 //Initialise img struct elements to NULL
-static void	init_img_clean(t_img *img)
+void	init_img_clean(t_img *img)
 {
 	img->img = NULL;
 	img->addr = NULL;

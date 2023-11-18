@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:32:19 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 22:16:22 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ typedef struct s_data
 void	init_data(t_data *data);
 void	init_mlx(t_data *data);
 void	init_textures(t_data *data);
+void	init_img_clean(t_img *img);
 
 //exit functions
 void	exit_cubed(t_data *data, int code);

@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 00:20:46 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:43:07 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 22:35:16 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static int	*ft_stoia(char **rgb_split, int *rgb)
 	i = 0;
 	while (rgb_split[i])
 	{
-		printf("%s\n", rgb_split[i]);
 		if (ft_isnumber(rgb_split[i]) == true)
 			rgb[i] = ft_atoi(rgb_split[i]);
 		else

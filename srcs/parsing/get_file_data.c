@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 23:28:20 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:45:28 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 22:30:46 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,20 @@ static char	*get_path(char *fileline, int j)
 }
 
 // Assign the given texture to the right element of the struct
-static int	fill_textures(t_data *data, t_textureinfo *texinfo, char *fileline, int j)
+static int	fill_textures(t_data *data, t_textureinfo *tex, char *file, int j)
 {
-	if (fileline[j + 2] && !ft_isspace(fileline[j + 2]))
+	if (file[j + 2] && !ft_isspace(file[j + 2]))
 		return (ERR);
-	if (fileline[j] == 'N' && fileline[j + 1] == 'O' && !(texinfo->north))
-		texinfo->north = get_path(fileline, j + 2);
-	else if (fileline[j] == 'S' && fileline[j + 1] == 'O' && !(texinfo->south))
-		texinfo->south = get_path(fileline, j + 2);
-	else if (fileline[j] == 'W' && fileline[j + 1] == 'E' && !(texinfo->west))
-		texinfo->west = get_path(fileline, j + 2);
-	else if (fileline[j] == 'E' && fileline[j + 1] == 'A' && !(texinfo->east))
-		texinfo->east = get_path(fileline, j + 2);
-	else if ((texinfo->north) && (texinfo->south) && (texinfo->west) && 
-		(texinfo->east))
+	if (file[j] == 'N' && file[j + 1] == 'O' && !(tex->north))
+		tex->north = get_path(file, j + 2);
+	else if (file[j] == 'S' && file[j + 1] == 'O' && !(tex->south))
+		tex->south = get_path(file, j + 2);
+	else if (file[j] == 'W' && file[j + 1] == 'E' && !(tex->west))
+		tex->west = get_path(file, j + 2);
+	else if (file[j] == 'E' && file[j + 1] == 'A' && !(tex->east))
+		tex->east = get_path(file, j + 2);
+	else if ((tex->north) && (tex->south) && (tex->west) && 
+		(tex->east))
 		exit_cubed(data, err_msg(ERR_TOO_MANY_TEXTURES, FAILURE));
 	else
 		return (ERR);
