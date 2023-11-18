@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:14:30 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 16:00:32 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:26:37 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ static bool	is_cub(char *file)
 	len = ft_strlen(file);
 	sub = ft_substr(file, len - 4, 4);
 	if (ft_strncmp(sub, ".cub", 4) == 0)
+	{
+		free(sub);
 		return (true);
+	}
+	free(sub);
 	return (false);
 }
 
@@ -50,7 +54,11 @@ static bool	is_xpm(char *file)
 	len = ft_strlen(file);
 	sub = ft_substr(file, len - 4, 4);
 	if (ft_strncmp(sub, ".xpm", 4) == 0)
+	{
+		free(sub);
 		return (true);
+	}
+	free(sub);
 	return (false);
 }
 
@@ -63,7 +71,10 @@ int	check_file(char *file, bool val)
 		return (err_msg(ERR_FILE_IS_DIR, FAILURE));
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (err_msg(strerror(errno), FAILURE));
+	{
+		printf("%s: %s\n", file, strerror(errno));
+		return (FAILURE);
+	}
 	close(fd);
 	if (val && !is_cub(file))
 		return (err_msg(ERR_FILE_NOT_CUB, FAILURE));

@@ -6,12 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 23:28:20 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:54:07 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:45:28 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+// Get the path of the texture
 static char	*get_path(char *fileline, int j)
 {
 	int		len;
@@ -40,7 +41,8 @@ static char	*get_path(char *fileline, int j)
 	return (path);
 }
 
-static int	fill_textures(t_textureinfo *texinfo, char *fileline, int j)
+// Assign the given texture to the right element of the struct
+static int	fill_textures(t_data *data, t_textureinfo *texinfo, char *fileline, int j)
 {
 	if (fileline[j + 2] && !ft_isspace(fileline[j + 2]))
 		return (ERR);
@@ -52,11 +54,15 @@ static int	fill_textures(t_textureinfo *texinfo, char *fileline, int j)
 		texinfo->west = get_path(fileline, j + 2);
 	else if (fileline[j] == 'E' && fileline[j + 1] == 'A' && !(texinfo->east))
 		texinfo->east = get_path(fileline, j + 2);
+	else if ((texinfo->north) && (texinfo->south) && (texinfo->west) && 
+		(texinfo->east))
+		exit_cubed(data, err_msg(ERR_TOO_MANY_TEXTURES, FAILURE));
 	else
 		return (ERR);
 	return (SUCCESS);
 }
 
+// Extract the info from the file and fill the struct
 static int	get_info(t_data *data, char **file, int i, int j)
 {
 	while (file[i][j] == ' ' || file[i][j] == '\t')
@@ -66,7 +72,7 @@ static int	get_info(t_data *data, char **file, int i, int j)
 		if (file[i][j + 1] && !ft_isspace(file[i][j + 1]) 
 			&& !ft_isdigit(file[i][j]))
 		{
-			if (fill_textures(&data->texinfo, file[i], j) == ERR)
+			if (fill_textures(data, &data->texinfo, file[i], j) == ERR)
 				return (err_msg(ERR_TEX_INVALID, FAILURE));
 			return (BREAK);
 		}
@@ -86,6 +92,7 @@ static int	get_info(t_data *data, char **file, int i, int j)
 	return (CONTINUE);
 }
 
+// Get the data from the file line by line
 int	get_file_data(t_data *data, char **file)
 {
 	int	i;

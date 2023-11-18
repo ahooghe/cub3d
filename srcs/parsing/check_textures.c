@@ -6,12 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:18:38 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 16:18:39 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:42:27 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+// Convert the rgb values to hex
 static unsigned long	convert_rgb_to_hex(int *rgb)
 {
 	unsigned long	result;
@@ -21,6 +22,7 @@ static unsigned long	convert_rgb_to_hex(int *rgb)
 	return (result);
 }
 
+// Check if the rgb values are valid
 static int	check_valid_rgb(int *rgb)
 {
 	int	i;
@@ -35,6 +37,7 @@ static int	check_valid_rgb(int *rgb)
 	return (SUCCESS);
 }
 
+// Check if the textures are valid
 int	check_textures(t_data *data, t_textureinfo *texinfo)
 {
 	if (!texinfo->north || !texinfo->south || !texinfo->west || !texinfo->east)

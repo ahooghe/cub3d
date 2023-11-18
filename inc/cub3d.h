@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 16:07:30 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:32:19 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
 
+# define TEX_SIZE 64
+
+# define MOVESPEED 0.015
+# define ROTSPEED 0.015
+
 /*	**************************************************************************
 									ERROR MACROS
 	************************************************************************** */
@@ -45,6 +50,7 @@
 # define ERR_FILE_NOT_XPM "The file does not contain valid .xpm textures."
 # define ERR_MALLOC "Malloc failed."
 # define ERR_TEX_INVALID "Texture file is invalid."
+# define ERR_TOO_MANY_TEXTURES "There are too many texture files."
 # define ERR_INVALID_MAP "Map structure is invalid."
 # define ERR_FLOOR_CEILING "Formatting of floor and/or ceiling is wrong."
 # define ERR_FLOOR "Floor is not a valid RGB color."
@@ -61,6 +67,9 @@
 # define ERR_MISSING_TEXTURE "The file does not contain all textures."
 # define ERR_MISSING_COLOR "The file does not contain all colors."
 # define ERR_COLOR_INVALID "Invalid RGB value."
+# define ERR_MLX_START "Mlx failed to start."
+# define ERR_MLX_WIN "Mlx failed to create a window."
+# define ERR_MLX_IMG "Mlx failed to create an image."
 
 /*	**************************************************************************
 									ENUM
@@ -75,10 +84,26 @@
 		CONTINUE = 10,
 	};
 
+	enum e_side
+	{
+		NORTH = 0,
+		SOUTH = 1,
+		WEST = 2,
+		EAST = 3,
+	};
+
 /*	**************************************************************************
 									STRUCTS
 	************************************************************************** */
 
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
+}	t_img;
 typedef struct s_textureinfo
 {
 	char			*north;
@@ -165,6 +190,8 @@ typedef struct s_data
 
 //init functions
 void	init_data(t_data *data);
+void	init_mlx(t_data *data);
+void	init_textures(t_data *data);
 
 //exit functions
 void	exit_cubed(t_data *data, int code);
@@ -185,7 +212,9 @@ int		check_textures(t_data *data, t_textureinfo *texinfo);
 int	render(t_data *data);
 
 //movement functions
+void	input(t_data *data);
 void	init_player_direction(t_data *data);
+int		move_player(t_data *data);
 
 //debug function
 void	debug_data(t_data *data);

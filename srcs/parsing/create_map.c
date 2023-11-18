@@ -6,12 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:54:58 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 16:14:16 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:44:25 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+// Find the biggest line in the map
 static size_t	find_biggest_line(t_mapinfo *mapinfo, int index)
 {
 	size_t	biggest_len;
@@ -26,6 +27,7 @@ static size_t	find_biggest_line(t_mapinfo *mapinfo, int index)
 	return (biggest_len);
 }
 
+// Count the number of lines in the map
 static int	count_map_lines(t_data *data, char **file, int i)
 {
 	int	k;
@@ -37,7 +39,7 @@ static int	count_map_lines(t_data *data, char **file, int i)
 		l = 0;
 		while (ft_isspace(file[k][l]))
 			l++;
-		if (file[k][l] != '1')
+		if (file[k][l] != '1' && file[k][l] != '0')
 			break ;
 		k++;
 	}
@@ -45,6 +47,7 @@ static int	count_map_lines(t_data *data, char **file, int i)
 	return (k - i);
 }
 
+// Fill the map with the data from the file
 static int	fill_map(t_data *data, t_mapinfo *mapinfo, char **map, int index)
 {
 	int	i;
@@ -69,6 +72,7 @@ static int	fill_map(t_data *data, t_mapinfo *mapinfo, char **map, int index)
 	return (SUCCESS);
 }
 
+// Replace the spaces in the map with '1'
 static void	fill_map_whitespace(t_data *data)
 {
 	int		i;

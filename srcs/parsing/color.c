@@ -6,12 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 00:20:46 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:52:24 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:43:07 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+//Check if the string is a number
 static bool	ft_isnumber(char *str)
 {
 	int		i;
@@ -21,6 +22,8 @@ static bool	ft_isnumber(char *str)
 	digit = true;
 	while (ft_isspace(str[i]))
 		i++;
+	if (!str[i])
+		return (false);
 	while (str[i] && !ft_isspace(str[i]))
 	{
 		if (ft_isdigit(str[i]) == 0)
@@ -30,6 +33,7 @@ static bool	ft_isnumber(char *str)
 	return (digit);
 }
 
+//Convert the string to an int array
 static int	*ft_stoia(char **rgb_split, int *rgb)
 {
 	int	i;
@@ -37,6 +41,7 @@ static int	*ft_stoia(char **rgb_split, int *rgb)
 	i = 0;
 	while (rgb_split[i])
 	{
+		printf("%s\n", rgb_split[i]);
 		if (ft_isnumber(rgb_split[i]) == true)
 			rgb[i] = ft_atoi(rgb_split[i]);
 		else
@@ -51,6 +56,7 @@ static int	*ft_stoia(char **rgb_split, int *rgb)
 	return (rgb);
 }
 
+//Set the rgb values
 static int	*set_rgb(t_data *data, char *colors)
 {
 	char	**rgb_split;

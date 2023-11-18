@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:47:18 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:49:56 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 16:29:16 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_texture(t_textureinfo *texture)
 	texture->east = NULL;
 	texture->floor = 0;
 	texture->ceiling = 0;
-	texture->hex_floor = 0;
-	texture->hex_ceiling = 0;
-	texture->size = 0;
+	texture->hex_floor = 0x0;
+	texture->hex_ceiling = 0x0;
+	texture->size = TEX_SIZE;
 	texture->index = 0;
 	texture->step = 0.0;
 	texture->pos = 0.0;
