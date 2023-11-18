@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/18 16:18:22 by ahooghe           #+#    #+#             */
+/*   Updated: 2023/11/18 16:18:23 by ahooghe          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 static void	debug_text(t_textureinfo *texinfo)
@@ -9,19 +21,23 @@ static void	debug_text(t_textureinfo *texinfo)
 	printf("%lu\n", texinfo->hex_floor);
 	printf("%lu\n", texinfo->hex_ceiling);
 }
-static void debug_map(t_mapinfo *mapinfo)
+
+static void	debug_map(t_mapinfo *mapinfo)
 {
+	int	i;
+
+	i = 0;
 	printf("%d\n", mapinfo->fd);
 	printf("%d\n", mapinfo->line_count);
 	printf("%s\n", mapinfo->path);
 	printf("%d\n", mapinfo->height);
 	printf("%d\n", mapinfo->width);
 	printf("%d\n", mapinfo->index_eom);
-	for (int i = 0; i < mapinfo->line_count; i++)
-		printf("%s\n", mapinfo->file[i]);
+	while (i < mapinfo->line_count)
+		printf("%s\n", mapinfo->file[i++]);
 }
 
-static void debug_ray(t_ray *ray)
+static void	debug_ray(t_ray *ray)
 {
 	printf("%f\n", ray->camera_x);
 	printf("%f\n", ray->dir_x);
@@ -47,11 +63,13 @@ static void	debug_player(t_player *player)
 	printf("%c\n", player->dir);
 	printf("%f\n", player->pos_x);
 	printf("%f\n", player->pos_y);
-
 }
 
 void	debug_data(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	printf("TEXTURE STRUCT:\n");
 	debug_text(&data->texinfo);
 	printf("MAP STRUCT:\n");
@@ -61,6 +79,6 @@ void	debug_data(t_data *data)
 	printf("PLAYER STRUCT:\n");
 	debug_player(&data->player);
 	printf("MAP:\n");
-	for (int i = 0; i < data->mapinfo.height; i++)
-		printf("%s\n", data->map[i]);
+	while (i < data->mapinfo.height)
+		printf("%s\n", data->map[i++]);
 }

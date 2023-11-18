@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/18 16:18:43 by ahooghe           #+#    #+#             */
+/*   Updated: 2023/11/18 16:18:44 by ahooghe          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 //Checks if the map is surrounded by walls
@@ -54,7 +66,7 @@ static int	check_map_content(t_data *data, char **map)
 }
 
 //Checks if the player is surrounded by has valid pathing
-int	check_player_pos(t_data *data,char **map)
+static int	check_player_pos(t_data *data, char **map)
 {
 	int	i;
 	int	j;
@@ -68,7 +80,8 @@ int	check_player_pos(t_data *data,char **map)
 	return (SUCCESS);
 }
 
-int	check_map_is_eof(t_mapinfo *map)
+//Checks if the map is the last element in the file
+static int	check_map_is_eof(t_mapinfo *map)
 {
 	int	i;
 	int	j;

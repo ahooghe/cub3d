@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:54:58 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:51:19 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 16:14:16 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	fill_map(t_data *data, t_mapinfo *mapinfo, char **map, int index)
 	return (SUCCESS);
 }
 
-void	fill_map_whitespace(t_data *data)
+static void	fill_map_whitespace(t_data *data)
 {
 	int		i;
 	int		j;

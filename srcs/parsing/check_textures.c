@@ -1,16 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_textures.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/18 16:18:38 by ahooghe           #+#    #+#             */
+/*   Updated: 2023/11/18 16:18:39 by ahooghe          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 static unsigned long	convert_rgb_to_hex(int *rgb)
 {
 	unsigned long	result;
 
-	result = (unsigned long)((rgb[0] & 0xff) * 65536) + ((rgb[1] & 0xff) * 256) + (rgb[2] & 0xff);
+	result = (unsigned long)((rgb[0] & 0xff) * 65536) + 
+		((rgb[1] & 0xff) * 256) + (rgb[2] & 0xff);
 	return (result);
 }
 
 static int	check_valid_rgb(int *rgb)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)
@@ -28,12 +41,12 @@ int	check_textures(t_data *data, t_textureinfo *texinfo)
 		return (err_msg(ERR_MISSING_TEXTURE, FAILURE));
 	if (!texinfo->floor || !texinfo->ceiling)
 		return (err_msg(ERR_MISSING_COLOR, FAILURE));
-	if (check_file(texinfo->north, false) == FAILURE ||
-		check_file(texinfo->south, false) == FAILURE ||
-		check_file(texinfo->west, false) == FAILURE ||
+	if (check_file(texinfo->north, false) == FAILURE || 
+		check_file(texinfo->south, false) == FAILURE || 
+		check_file(texinfo->west, false) == FAILURE || 
 		check_file(texinfo->east, false) == FAILURE)
 		return (FAILURE);
-	if (check_valid_rgb(texinfo->floor) == FAILURE ||
+	if (check_valid_rgb(texinfo->floor) == FAILURE || 
 		check_valid_rgb(texinfo->ceiling) == FAILURE)
 		return (FAILURE);
 	texinfo->hex_floor = convert_rgb_to_hex(texinfo->floor);

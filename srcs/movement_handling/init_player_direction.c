@@ -6,13 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:21:17 by brmajor           #+#    #+#             */
-/*   Updated: 2023/11/18 14:58:55 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 16:13:36 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	playernorthsouth(t_data *data)
+static void	playernorthsouth(t_data *data)
 {
 	if (data->player.dir == 'N')
 	{
@@ -30,7 +30,7 @@ void	playernorthsouth(t_data *data)
 	}
 }
 
-void	playereastwest(t_data *data)
+static void	playereastwest(t_data *data)
 {
 	if (data->player.dir == 'E')
 	{
