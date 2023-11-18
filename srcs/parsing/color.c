@@ -6,13 +6,13 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 00:20:46 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:10:29 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:52:24 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static bool ft_isnumber(char *str)
+static bool	ft_isnumber(char *str)
 {
 	int		i;
 	bool	digit;
@@ -30,7 +30,7 @@ static bool ft_isnumber(char *str)
 	return (digit);
 }
 
-static int *ft_stoia(char **rgb_split, int *rgb)
+static int	*ft_stoia(char **rgb_split, int *rgb)
 {
 	int	i;
 
@@ -51,11 +51,11 @@ static int *ft_stoia(char **rgb_split, int *rgb)
 	return (rgb);
 }
 
-static int *set_rgb(t_data *data, char *colors)
+static int	*set_rgb(t_data *data, char *colors)
 {
-	char **rgb_split;
-	int *rgb;
-	int i;
+	char	**rgb_split;
+	int		*rgb;
+	int		i;
 
 	rgb_split = ft_split(colors, ',');
 	if (rgb_split == NULL)
@@ -73,7 +73,7 @@ static int *set_rgb(t_data *data, char *colors)
 	return (ft_stoia(rgb_split, rgb));
 }
 
-int fill_color(t_data *data, t_textureinfo *texinfo, char *fileline, int j)
+int	fill_color(t_data *data, t_textureinfo *texinfo, char *fileline, int j)
 {
 	if (fileline[j + 1] && !ft_isspace(fileline[j + 1]))
 		return (err_msg(ERR_FLOOR_CEILING, ERR));

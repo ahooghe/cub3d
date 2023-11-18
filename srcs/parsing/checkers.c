@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:14:30 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/16 13:10:42 by brmajor          ###   ########.fr       */
+/*   Updated: 2023/11/18 16:00:32 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static bool	is_xpm(char *file)
 
 	len = ft_strlen(file);
 	sub = ft_substr(file, len - 4, 4);
-	if (ft_strncmp(sub, ".xmp", 4) == 0)
+	if (ft_strncmp(sub, ".xpm", 4) == 0)
 		return (true);
 	return (false);
 }
@@ -68,6 +68,6 @@ int	check_file(char *file, bool val)
 	if (val && !is_cub(file))
 		return (err_msg(ERR_FILE_NOT_CUB, FAILURE));
 	if (!val && !is_xpm(file))
-		return (err_msg(ERR_FILE_NOT_XMP, FAILURE));
+		return (err_msg(ERR_FILE_NOT_XPM, FAILURE));
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:24:40 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 16:07:30 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define ERR_INP "Correct usage: ./cub3d <path to .cub file>"
 # define ERR_FILE_IS_DIR "The path you entered is a directory."
 # define ERR_FILE_NOT_CUB "The entered file does not have the .cub suffix."
-# define ERR_FILE_NOT_XMP "The file does not contain valid .xmp textures."
+# define ERR_FILE_NOT_XPM "The file does not contain valid .xpm textures."
 # define ERR_MALLOC "Malloc failed."
 # define ERR_TEX_INVALID "Texture file is invalid."
 # define ERR_INVALID_MAP "Map structure is invalid."
@@ -50,6 +50,17 @@
 # define ERR_FLOOR "Floor is not a valid RGB color."
 # define ERR_CEILING "Ceiling is not a valid RGB color."
 # define ERR_RGB "Input color is not a valid RGB color."
+# define ERR_DIR "The direction inside the given map is invalid."
+# define ERR_NO_MAP "No map found in file."
+# define ERR_NO_WALL_WRAP "The given map is not surrounded by walls."
+# define ERR_MAP_TOO_SMALL "The given map is too small."
+# define ERR_MAP_INVALID "The given map has characters that don't exist."
+# define ERR_TOO_MANY_PLAYERS "The given map has more than 1 player."
+# define ERR_MAP_NOT_LAST "The map is not the last element in the file."
+# define ERR_NO_PLAYER "The map does not contain a player."
+# define ERR_MISSING_TEXTURE "The file does not contain all textures."
+# define ERR_MISSING_COLOR "The file does not contain all colors."
+# define ERR_COLOR_INVALID "Invalid RGB value."
 
 /*	**************************************************************************
 									ENUM
@@ -165,12 +176,19 @@ int		parse_args(char *file, t_data *data);
 int 	check_file(char *file, bool val);
 void	parse_data(char *file, t_data *data);
 int		get_file_data(t_data *data, char **file);
-int fill_color(t_data *data, t_textureinfo *texinfo, char *fileline, int j);
-int	create_map(t_data *data, char **file, int i);
+int 	fill_color(t_data *data, t_textureinfo *texinfo, char *fileline, int j);
+int		create_map(t_data *data, char **file, int i);
+int 	check_map(t_data *data, char **map);
+int		check_textures(t_data *data, t_textureinfo *texinfo);
 
 //render functions
 int	render(t_data *data);
 
-//error handling functions
+//movement functions
+void	init_player_direction(t_data *data);
+
+//debug function
+void	debug_data(t_data *data);
+
 
 #endif

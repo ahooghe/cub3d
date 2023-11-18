@@ -6,15 +6,15 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:54:58 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 14:14:09 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:51:19 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static size_t find_biggest_line(t_mapinfo *mapinfo, int index)
+static size_t	find_biggest_line(t_mapinfo *mapinfo, int index)
 {
-	size_t biggest_len;
+	size_t	biggest_len;
 
 	biggest_len = ft_strlen((const char *)mapinfo->file[index]);
 	while (mapinfo->file[index])
@@ -26,10 +26,10 @@ static size_t find_biggest_line(t_mapinfo *mapinfo, int index)
 	return (biggest_len);
 }
 
-static int count_map_lines(t_data *data, char **file, int i)
+static int	count_map_lines(t_data *data, char **file, int i)
 {
-	int k;
-	int l;
+	int	k;
+	int	l;
 
 	k = i;
 	while (file[k])
@@ -69,6 +69,25 @@ static int	fill_map(t_data *data, t_mapinfo *mapinfo, char **map, int index)
 	return (SUCCESS);
 }
 
+void	fill_map_whitespace(t_data *data)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (ft_isspace(data->map[i][j]))
+				data->map[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+}
+
 int	create_map(t_data *data, char **file, int i)
 {
 	data->mapinfo.height = count_map_lines(data, file, i);
@@ -77,6 +96,7 @@ int	create_map(t_data *data, char **file, int i)
 		exit_cubed(data, err_msg(ERR_MALLOC, FAILURE));
 	if (fill_map(data, &data->mapinfo, data->map, i) == FAILURE)
 		return (FAILURE);
-	//change_space_to_wall(data);
+	fill_map_whitespace(data);
+	printf("\n");
 	return (SUCCESS);
 }

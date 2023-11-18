@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:47:18 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/16 13:03:41 by brmajor          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:49:56 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_map(t_mapinfo *map)
 
 void	init_ray(t_ray *ray)
 {
-    ray->camera_x = 0.0;
+	ray->camera_x = 0.0;
 	ray->dir_x = 0.0;
 	ray->dir_y = 0.0;
 	ray->map_x = 0;
@@ -79,6 +79,7 @@ void	init_player(t_player *player)
 	player->move_y = 0;
 	player->rotate = 0;
 }
+
 void	init_data(t_data *data)
 {
 	data->mlx = NULL;

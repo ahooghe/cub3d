@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_direction.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brmajor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:21:17 by brmajor           #+#    #+#             */
-/*   Updated: 2023/11/16 13:53:31 by brmajor          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:58:55 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	init_player_direction(t_data *data)
+void	playernorthsouth(t_data *data)
 {
 	if (data->player.dir == 'N')
 	{
@@ -21,19 +21,23 @@ void	init_player_direction(t_data *data)
 		data->player.plane_x = 0.5;
 		data->player.plane_y = 0;
 	}
-	else if (data->player.dir == 'E')
-	{
-		data->player.dir_x = 1;
-		data->player.dir_y = 0;
-		data->player.plane_x = 0;
-		data->player.plane_y = 0.5;
-	}
 	else if (data->player.dir == 'S')
 	{
 		data->player.dir_x = 0;
 		data->player.dir_y = 1;
 		data->player.plane_x = -0.5;
 		data->player.plane_y = 0;
+	}
+}
+
+void	playereastwest(t_data *data)
+{
+	if (data->player.dir == 'E')
+	{
+		data->player.dir_x = 1;
+		data->player.dir_y = 0;
+		data->player.plane_x = 0;
+		data->player.plane_y = 0.5;
 	}
 	else if (data->player.dir == 'W')
 	{
@@ -42,4 +46,14 @@ void	init_player_direction(t_data *data)
 		data->player.plane_x = 0;
 		data->player.plane_y = -0.5;
 	}
+}
+
+void	init_player_direction(t_data *data)
+{
+	if (data->player.dir == 'N' || data->player.dir == 'S')
+		playernorthsouth(data);
+	else if (data->player.dir == 'E' || data->player.dir == 'W')
+		playereastwest(data);
+	else
+		exit_cubed(data, err_msg(ERR_DIR, FAILURE));
 }
