@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/16 13:21:44 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:39:44 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define ERR_FLOOR_CEILING "Formatting of floor and/or ceiling is wrong."
 # define ERR_FLOOR "Floor is not a valid RGB color."
 # define ERR_CEILING "Ceiling is not a valid RGB color."
+# define ERR_RGB "Input color is not a valid RGB color."
 
 /*	**************************************************************************
 									ENUM
@@ -157,12 +158,15 @@ void	init_data(t_data *data);
 //exit functions
 void	exit_cubed(t_data *data, int code);
 int 	err_msg(char *str, int code);
+void	free_2dim(void **arr);
 
 //parse functions
 int		parse_args(char *file, t_data *data);
 int 	check_file(char *file, bool val);
 void	parse_data(char *file, t_data *data);
 int		get_file_data(t_data *data, char **file);
+int fill_color(t_data *data, t_textureinfo *texinfo, char *fileline, int j);
+int	create_map(t_data *data, char **file, int i);
 
 //render functions
 int	render(t_data *data);

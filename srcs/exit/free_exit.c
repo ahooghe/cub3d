@@ -6,14 +6,14 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:12:41 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 20:23:38 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:39:36 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
 //Function to free a 2 dimensional array
-static void	free_2dim(void **arr)
+void	free_2dim(void **arr)
 {
 	unsigned int i;
 
