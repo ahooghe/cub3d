@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   free_exit.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 14:12:41 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/16 14:39:36 by ahooghe          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../inc/cub3d.h"
 
 //Function to free a 2 dimensional array
 void	free_2dim(void **arr)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (arr[i])
@@ -59,7 +47,7 @@ static void	free_map(t_data *data)
 }
 
 //Function to free the data struct
-static int free_data(t_data *data)
+static int	free_data(t_data *data)
 {
 	if (data->textures)
 		free_2dim((void **)data->textures);
@@ -71,7 +59,7 @@ static int free_data(t_data *data)
 }
 
 //Function to close mlx and exit without leaks
-void exit_cubed(t_data *data, int code)
+void	exit_cubed(t_data *data, int code)
 {
 	if (!data)
 		exit(code);

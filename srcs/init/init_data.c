@@ -6,16 +6,18 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:47:18 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/15 20:24:06 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/16 13:03:41 by brmajor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-//Functions to initialise all structs to 0 / NULL values for easier debugging and freeing
-void    init_texture(t_textureinfo *texture)
+//Functions to initialise all structs to 0 / NULL values
+//	for easier debugging and freeing
+
+void	init_texture(t_textureinfo *texture)
 {
-    texture->north = NULL;
+	texture->north = NULL;
 	texture->south = NULL;
 	texture->west = NULL;
 	texture->east = NULL;
@@ -30,9 +32,10 @@ void    init_texture(t_textureinfo *texture)
 	texture->x = 0;
 	texture->y = 0;
 }
-void    init_map(t_mapinfo *map)
+
+void	init_map(t_mapinfo *map)
 {
-    map->fd = 0;
+	map->fd = 0;
 	map->line_count = 0;
 	map->path = NULL;
 	map->file = NULL;
@@ -41,7 +44,7 @@ void    init_map(t_mapinfo *map)
 	map->index_eom = 0;
 }
 
-void    init_ray(t_ray *ray)
+void	init_ray(t_ray *ray)
 {
     ray->camera_x = 0.0;
 	ray->dir_x = 0.0;
@@ -62,23 +65,23 @@ void    init_ray(t_ray *ray)
 	ray->draw_end = 0;
 }
 
-void    init_player(t_player *player)
+void	init_player(t_player *player)
 {
-    player->dir = '\0';
-    player->pos_x = 0.0;
-    player->pos_y = 0.0;
-    player->dir_x = 0.0;
-    player->dir_y = 0.0;
-    player->plane_x = 0.0;
-    player->plane_y = 0.0;
-    player->has_moved = 0;
-    player->move_x = 0;
-    player->move_y = 0;
-    player->rotate = 0;
+	player->dir = '\0';
+	player->pos_x = 0.0;
+	player->pos_y = 0.0;
+	player->dir_x = 0.0;
+	player->dir_y = 0.0;
+	player->plane_x = 0.0;
+	player->plane_y = 0.0;
+	player->has_moved = 0;
+	player->move_x = 0;
+	player->move_y = 0;
+	player->rotate = 0;
 }
-void    init_data(t_data *data)
+void	init_data(t_data *data)
 {
-    data->mlx = NULL;
+	data->mlx = NULL;
 	data->win = NULL;
 	data->win_height = 0;
 	data->win_width = 0;
