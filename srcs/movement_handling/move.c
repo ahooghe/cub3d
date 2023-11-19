@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 19:16:19 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:37:36 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 22:50:37 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int	move_player(t_data *data)
 		moved += move_player_pos(data);
 	if (data->player.rotate != 0)
 		moved += rotate_player(data);
+	if (moved != 0)
 	return (moved);
 }
