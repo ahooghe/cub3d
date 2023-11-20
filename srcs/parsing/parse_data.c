@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:50:48 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/16 13:12:05 by brmajor          ###   ########.fr       */
+/*   Updated: 2023/11/18 20:26:40 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static int	get_amount_lines(t_data *data, char *file)
 	line_count = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_cubed(data, err_msg(strerror(errno), errno));
+	{
+		printf("%s: %s", file, strerror(errno));
+		return (FAILURE);
+	}
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -68,7 +71,10 @@ void	parse_data(char *file, t_data *data)
 		exit_cubed(data, err_msg(ERR_MALLOC, 0));
 	data->mapinfo.fd = open(file, O_RDONLY);
 	if (data->mapinfo.fd < 0)
-		exit_cubed(data, err_msg(strerror(errno), FAILURE));
+	{
+		printf("%s: %s\n", file, strerror(errno));
+		exit_cubed(data, FAILURE);
+	}
 	fill_2dim(0, 0, 0, data);
 	close (data->mapinfo.fd);
 	data->mapinfo.fd = -1;

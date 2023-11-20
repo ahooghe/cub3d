@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahooghe <ahooghe@student.42.fr>            +#+  +:+       +#+         #
+#    By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/05 06:41:10 by ahooghe           #+#    #+#              #
-#    Updated: 2023/06/05 06:41:11 by ahooghe          ###   ########.fr        #
+#    Updated: 2023/11/18 14:33:12 by ahooghe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= libft.a
 CC			:= cc
-FLAGS		:= -Wall -Wextra -Werror
+FLAGS		:= -Wall -Wextra -Werror -fPIC
 DEBUG		:= -g
 SRCS		:= ft_atoi.c \
 				ft_bzero.c \

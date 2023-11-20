@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahooghe <ahooghe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 06:41:03 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/06/05 06:41:04 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:59:53 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	*get_current_line(char **extra_chars, ssize_t *i)
 	{
 		line[len] = (*extra_chars)[len];
 		len++;
-	}	
+	}
 	line[len] = '\0';
 	return (line);
 }
