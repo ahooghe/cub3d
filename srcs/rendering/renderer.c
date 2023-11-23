@@ -17,8 +17,8 @@ int	render(t_data *data)
 	data->player.has_moved += move_player(data);
 	if (data->player.has_moved == 0)
 		return (0);
-	//init_texture_pixels(data);
-	//raycaster(&data->player, data);
-	//render_frame(data);
+	init_texture_pixels(data);
+	raycaster(&data->player, &data);
+	render_frame(data);
 	return (0);
 }

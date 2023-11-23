@@ -112,6 +112,8 @@ typedef struct s_textureinfo
 	char			*east;
 	int				*floor;
 	int				*ceiling;
+	int				tex_width;
+	int				tex_height;
 	unsigned long	hex_floor;
 	unsigned long	hex_ceiling;
 	int				size;
@@ -177,6 +179,7 @@ typedef struct s_data
 	int			win_width;
 	int			**texture_pixels;
 	int			**textures;
+	t_img		img;
 	t_textureinfo	texinfo;
 	t_player	player;
 	t_ray		ray;

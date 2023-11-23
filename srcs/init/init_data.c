@@ -88,6 +88,7 @@ void	init_data(t_data *data)
 	data->win_width = 0;
 	data->texture_pixels = NULL;
 	data->textures = NULL;
+	init_img(&data);
 	init_texture(&data->texinfo);
 	init_player(&data->player);
 	init_ray(&data->ray);
