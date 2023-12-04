@@ -1,7 +1,7 @@
 NAME=cub3d
 
 CC=cc
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra -g
 
 SRCS=srcs/main.c
 SRCS_PARSING=srcs/parsing/checkers.c srcs/parsing/parse_args.c srcs/parsing/parse_data.c srcs/parsing/get_file_data.c srcs/parsing/color.c srcs/parsing/create_map.c srcs/parsing/check_map.c srcs/parsing/check_textures.c

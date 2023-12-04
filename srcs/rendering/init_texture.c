@@ -3,40 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brmajor <brmajor@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:44:58 by brmajor           #+#    #+#             */
-/*   Updated: 2023/11/23 12:46:54 by brmajor          ###   ########.fr       */
+/*   Updated: 2023/12/03 20:33:23 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void    init_texture_pixels(t_data *data)
+void	init_texture_pixels(t_data *data)
 {
-    int     i;
-    int     j;
+	int	i;
 
-    i = 0;
-    data->texture_pixels = malloc(sizeof(int *) * 4);
-    if (!data->texture_pixels)
-        exit(1);
-    while (i < 4)
-    {
-        data->texture_pixels[i] = malloc(sizeof(int) * (data->texinfo.tex_height * data->texinfo.tex_width));
-        if (!data->texture_pixels[i])
-            exit(1);
-        i++;
-    }
-    i = 0;
-    while (i < 4)
-    {
-        j = 0;
-        while (j < (data->texinfo.tex_height * data->texinfo.tex_width))
-        {
-            data->texture_pixels[i][j] = data->textures[i][j];
-            j++;
-        }
-        i++;
-    }
+	if (data->texture_pixels)
+		free_2dim((void **)data->texture_pixels);
+	data->texture_pixels = ft_calloc(data->win_height + 1,
+			sizeof * data->texture_pixels);
+	if (!data->texture_pixels)
+		exit_cubed(data, err_msg(ERR_MALLOC, 1));
+	i = 0;
+	while (i < data->win_height)
+	{
+		data->texture_pixels[i] = ft_calloc(data->win_width + 1,
+				sizeof * data->texture_pixels);
+		if (!data->texture_pixels[i])
+			exit_cubed(data, err_msg(ERR_MALLOC, 1));
+		i++;
+	}
 }

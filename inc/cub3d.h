@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 22:16:22 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/03 20:39:07 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,10 @@ typedef struct s_data
 
 //init functions
 void	init_data(t_data *data);
+void	init_texture(t_textureinfo *texture);
+void	init_map(t_mapinfo *map);
+void	init_ray(t_ray *ray);
+void	init_player(t_player *player);
 void	init_mlx(t_data *data);
 void	init_textures(t_data *data);
 void	init_img_clean(t_img *img);
@@ -213,7 +217,10 @@ int 	check_map(t_data *data, char **map);
 int		check_textures(t_data *data, t_textureinfo *texinfo);
 
 //render functions
-int	render(t_data *data);
+int		render(t_data *data);
+void	raycaster(t_player *plyr, t_data *data);
+void    init_texture_pixels(t_data *data);
+void    render_frame(t_data *data);
 
 //movement functions
 void	input(t_data *data);

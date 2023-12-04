@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:47:18 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 16:29:16 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/03 20:41:10 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	init_data(t_data *data)
 	data->win_width = 0;
 	data->texture_pixels = NULL;
 	data->textures = NULL;
-	init_img(&data);
+	init_img_clean(&data->img);
 	init_texture(&data->texinfo);
 	init_player(&data->player);
 	init_ray(&data->ray);
