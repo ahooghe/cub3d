@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:54:58 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:44:25 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 11:45:40 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ static int	fill_map(t_data *data, t_mapinfo *mapinfo, char **map, int index)
 		if (!map[i])
 			exit_cubed(data, err_msg(ERR_MALLOC, FAILURE));
 		while (mapinfo->file[index][j] && mapinfo->file[index][j] != '\n')
-			map[i][j++] = mapinfo->file[index][j];
+		{
+			map[i][j] = mapinfo->file[index][j];
+			j++;
+		}
 		while (j < mapinfo->width)
 			map[i][j++] = '\0';
 		i++;

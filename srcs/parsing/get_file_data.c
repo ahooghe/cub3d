@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 23:28:20 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 22:30:46 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 12:45:33 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	fill_textures(t_data *data, t_textureinfo *tex, char *file, int j)
 		tex->west = get_path(file, j + 2);
 	else if (file[j] == 'E' && file[j + 1] == 'A' && !(tex->east))
 		tex->east = get_path(file, j + 2);
-	else if ((tex->north) && (tex->south) && (tex->west) && 
+	else if ((tex->north) && (tex->south) && (tex->west) && \
 		(tex->east))
 		exit_cubed(data, err_msg(ERR_TOO_MANY_TEXTURES, FAILURE));
 	else
@@ -65,11 +65,11 @@ static int	fill_textures(t_data *data, t_textureinfo *tex, char *file, int j)
 // Extract the info from the file and fill the struct
 static int	get_info(t_data *data, char **file, int i, int j)
 {
-	while (file[i][j] == ' ' || file[i][j] == '\t')
+	while (ft_isspace(file[i][j]))
 		j++;
 	if (ft_isprint(file[i][j]) && !ft_isdigit(file[i][j]))
 	{
-		if (file[i][j + 1] && !ft_isspace(file[i][j + 1]) 
+		if (file[i][j + 1] && !ft_isspace(file[i][j + 1]) \
 			&& !ft_isdigit(file[i][j]))
 		{
 			if (fill_textures(data, &data->texinfo, file[i], j) == ERR)

@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:47:18 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/12/03 20:41:10 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 12:35:56 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	init_data(t_data *data)
 {
 	data->mlx = NULL;
 	data->win = NULL;
-	data->win_height = 0;
-	data->win_width = 0;
+	data->win_height = WIN_HEIGHT;
+	data->win_width = WIN_WIDTH;
 	data->texture_pixels = NULL;
 	data->textures = NULL;
 	init_img_clean(&data->img);

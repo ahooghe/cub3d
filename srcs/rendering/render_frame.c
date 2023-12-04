@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:45:12 by brmajor           #+#    #+#             */
-/*   Updated: 2023/12/03 20:39:32 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 12:53:33 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	init_img(t_data *data, t_img *image, int width, int height)
 			&image->size_line, &image->endian);
 }
 
-void    render_frame(t_data *data)
+void	render_frame(t_data *data)
 {
-    t_img	image;
+	t_img	image;
 	int		x;
 	int		y;
 

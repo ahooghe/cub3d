@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:18:43 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:09:54 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 11:46:07 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	check_map_border(t_mapinfo *mapinfo, char **map)
 		}
 		i++;
 	}
+	return (SUCCESS);
 }
 
 //Checks if the map contains only valid characters
@@ -98,6 +99,7 @@ static int	check_map_is_eof(t_mapinfo *map)
 		}
 		i++;
 	}
+	return (SUCCESS);
 }
 
 int	check_map(t_data *data, char **map)

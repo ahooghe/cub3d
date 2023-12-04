@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:14:30 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 20:26:37 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 12:01:59 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 static bool	is_dir(char *file)
 {
 	int		fd;
-	bool	ret;
 
-	ret = false;
 	fd = open(file, O_DIRECTORY);
-	if (fd >= 0)
-	{
-		close (fd);
-		ret = true;
-	}
-	return (ret);
+	if (fd >= 0 && close(fd) != -1)
+		return (true);
+	return (false);
 }
 
 //Function to check if  file is .cub
@@ -37,12 +32,8 @@ static bool	is_cub(char *file)
 	len = ft_strlen(file);
 	sub = ft_substr(file, len - 4, 4);
 	if (ft_strncmp(sub, ".cub", 4) == 0)
-	{
-		free(sub);
-		return (true);
-	}
-	free(sub);
-	return (false);
+		return (free(sub), true);
+	return (free(sub), false);
 }
 
 //Function to check if file is .xmp

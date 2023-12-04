@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 19:16:19 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/11/18 22:50:37 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 12:45:05 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	validate_move(t_data *data, double new_x, double new_y)
 	int	moved;
 
 	moved = 0;
-	if (is_valid_pos(data, new_x, data->player.pos_y) == SUCCESS && 
+	if (is_valid_pos(data, new_x, data->player.pos_y) == SUCCESS && \
 		is_valid_pos(data, data->player.pos_x, new_y) == SUCCESS)
 	{
 		data->player.pos_x = new_x;
@@ -77,11 +77,11 @@ static int	rotate_player(t_data *data)
 
 	tmp_x = data->player.dir_x;
 	rot = ROTSPEED * data->player.rotate;
-	data->player.dir_x = data->player.dir_x * cos(rot) - 
+	data->player.dir_x = data->player.dir_x * cos(rot) - \
 		data->player.dir_y * sin(rot);
 	data->player.dir_y = tmp_x * sin(rot) + data->player.dir_y * cos(rot);
 	tmp_x = data->player.plane_x;
-	data->player.plane_x = data->player.plane_x * cos(rot) - 
+	data->player.plane_x = data->player.plane_x * cos(rot) - \
 		data->player.plane_y * sin(rot);
 	data->player.plane_y = tmp_x * sin(rot) + data->player.plane_y * cos(rot);
 	return (1);
@@ -96,12 +96,11 @@ int	move_player(t_data *data)
 		moved += move_player_pos(data);
 	if (data->player.move_y == -1)
 		moved += move_player_pos(data);
-	if (data->player.move_x == -1) 
+	if (data->player.move_x == -1)
 		moved += move_player_pos(data);
 	if (data->player.move_x == 1)
 		moved += move_player_pos(data);
 	if (data->player.rotate != 0)
 		moved += rotate_player(data);
-	if (moved != 0)
 	return (moved);
 }

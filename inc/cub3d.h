@@ -6,7 +6,7 @@
 /*   By: ahooghe <ahooghe@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:33:33 by ahooghe           #+#    #+#             */
-/*   Updated: 2023/12/03 20:39:07 by ahooghe          ###   ########.fr       */
+/*   Updated: 2023/12/04 12:52:25 by ahooghe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,8 +218,9 @@ int		check_textures(t_data *data, t_textureinfo *texinfo);
 
 //render functions
 int		render(t_data *data);
-void	raycaster(t_player *plyr, t_data *data);
 void    init_texture_pixels(t_data *data);
+void	raycaster(t_player *plyr, t_data *data);
+void	upd_tex(t_data *data, t_textureinfo *tex, t_ray *ray, int x);
 void    render_frame(t_data *data);
 
 //movement functions
